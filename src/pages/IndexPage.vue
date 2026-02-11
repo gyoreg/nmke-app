@@ -1,5 +1,26 @@
 <template>
   <q-page class="row items-center justify-evenly">
+    <div class="q-pa-md">
+      <q-separator class="q-my-md" />
+
+      <div v-if="user">
+        <q-button label="Logout" color="primary" @click="logout">Logout</q-button>
+
+        <q-separator class="q-my-md" />
+
+        <q-label>{{ user?.email }}</q-label
+        ><br />
+        <q-label>{{ user?.name }}</q-label
+        ><br />
+        <img :src="user?.picture" alt="User Picture" />
+      </div>
+      <div v-else>
+        <GoogleLogin :callback="handleLogin" prompt />
+        <q-separator class="q-my-md" />
+        No user logged in
+      </div>
+    </div>
+
     <example-component
       title="Example component"
       active
@@ -13,6 +34,30 @@
 import { ref } from 'vue';
 import type { Todo, Meta } from 'components/models';
 import ExampleComponent from 'components/ExampleComponent.vue';
+
+import { decodeCredential, googleLogout } from 'vue3-google-login';
+
+interface GoogleUser {
+  email: string;
+  name: string;
+  picture: string;
+  sub: string;
+}
+
+const user = ref<GoogleUser | null>(null);
+
+const handleLogin = (response: { credential: string }) => {
+  user.value = decodeCredential(response.credential) as GoogleUser;
+  console.log('User:', user.value);
+
+  /*
+    user contains:
+    - email
+    - name
+    - picture
+    - sub (Google user ID)
+  */
+};
 
 const todos = ref<Todo[]>([
   {
@@ -40,4 +85,9 @@ const todos = ref<Todo[]>([
 const meta = ref<Meta>({
   totalCount: 1200,
 });
+
+function logout() {
+  user.value = null;
+  googleLogout();
+}
 </script>
