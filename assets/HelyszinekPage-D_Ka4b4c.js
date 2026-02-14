@@ -1,1 +1,0 @@
-import{_ as o}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{J as r,T as t,S as n}from"./index-Dae4z8GE.js";const a={};function l(s,e){return r(),t("div",null,[...e[0]||(e[0]=[n("h4",null,"Helyszínek",-1),n("p",null,"Locations management (placeholder).",-1)])])}const f=o(a,[["render",l]]);export{f as default};

@@ -1,0 +1,1 @@
+import{_ as e}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{Q as r,$ as n}from"./index-CZKlSaMt.js";const t={};function c(o,a){return r(),n("h3",null,"Raktár index")}const f=e(t,[["render",c]]);export{f as default};

@@ -1,0 +1,1 @@
+import{L as t}from"./index.esm-D4stAK4K.js";import"./index-CZKlSaMt.js";const s=({app:o})=>{o.use(t,{clientId:"371817583218-0p8jakk0sume58nqdadfipcsqsg1lv5e.apps.googleusercontent.com"})};export{s as default};

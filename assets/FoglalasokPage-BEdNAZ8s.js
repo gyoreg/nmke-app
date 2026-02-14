@@ -1,0 +1,1 @@
+import{Q as o}from"./QPage-BrKh-KqS.js";import{_ as e}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{Q as r,R as s,S as t,Z as l}from"./index-CZKlSaMt.js";import"./render-BsoNFefa.js";const c={};function n(f,a){return r(),s(o,{class:"q-pa-md"},{default:t(()=>[...a[0]||(a[0]=[l("h2",null,"Foglalasok",-1)])]),_:1})}const d=e(c,[["render",n]]);export{d as default};

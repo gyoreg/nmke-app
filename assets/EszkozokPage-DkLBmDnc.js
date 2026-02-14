@@ -1,0 +1,1 @@
+import{_ as r}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{Q as s,$ as t,Z as o}from"./index-CZKlSaMt.js";const n={};function l(a,e){return s(),t("div",null,[...e[0]||(e[0]=[o("h4",null,"Eszközök",-1),o("p",null,"List of items (placeholder).",-1)])])}const i=r(n,[["render",l]]);export{i as default};
