@@ -8,9 +8,15 @@ const routes: RouteRecordRaw[] = [
       { path: '', component: () => import('pages/IndexPage.vue') },
       {
         path: 'raktar',
-        component: () => import('pages/raktar/IndexPage.vue'),
+        component: () => import('pages/raktar/_layout.vue'),
+        meta: {
+          sectionTabs: [
+            { label: 'Eszközök', to: '/raktar/eszkozok', icon: 'mdi-warehouse' },
+            { label: 'Helyszínek', to: '/raktar/helyszinek', icon: 'mdi-map-marker' },
+          ],
+        },
         children: [
-          { path: '', redirect: '/raktar/eszkozok' },
+          { path: '', component: () => import('pages/raktar/IndexPage.vue') },
           { path: 'eszkozok', component: () => import('pages/raktar/EszkozokPage.vue') },
           { path: 'helyszinek', component: () => import('pages/raktar/HelyszinekPage.vue') },
         ],

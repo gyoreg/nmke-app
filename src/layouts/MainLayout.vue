@@ -37,16 +37,52 @@
     </q-drawer>
 
     <q-page-container>
+      <div class="desktop-tabs" v-if="!isMobile && sectionTabs.length">
+        <q-tabs inline-label align="left" active-color="primary" indicator-color="secondary">
+          <q-route-tab
+            v-for="tab in sectionTabs"
+            :key="tab.to"
+            :to="tab.to"
+            :label="tab.label"
+            :icon="tab.icon"
+          />
+        </q-tabs>
+      </div>
       <router-view />
     </q-page-container>
+
+    <q-footer class="text-center bg-background" elevated>
+      <q-tabs
+        v-if="isMobile && sectionTabs.length"
+        align="justify"
+        dense
+        no-caps
+        shrink
+        active-bg-color="accent"
+        indicator-color="transparent"
+      >
+        <q-route-tab
+          v-for="tab in sectionTabs"
+          :key="tab.to"
+          :to="tab.to"
+          :label="tab.label"
+          :icon="tab.icon"
+        />
+      </q-tabs>
+    </q-footer>
   </q-layout>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
+import { useRoute } from 'vue-router';
+import { useQuasar } from 'quasar';
 import EssentialLink, { type EssentialLinkProps } from 'components/EssentialLink.vue';
 import ApplicationLink from 'src/components/ApplicationLink.vue';
-// URL for custom menu icon
+import type { SectionTab } from 'src/types/sectionTab';
+
+const route = useRoute();
+const $q = useQuasar();
 
 const appsList = [
   {
@@ -89,4 +125,12 @@ const leftDrawerOpen = ref(false);
 function toggleLeftDrawer() {
   leftDrawerOpen.value = !leftDrawerOpen.value;
 }
+
+const isMobile = computed(() => $q.screen.lt.md);
+
+const sectionTabs = computed<SectionTab[]>(() => {
+  const matched = [...route.matched].reverse();
+  const record = matched.find((r) => r.meta.sectionTabs);
+  return record?.meta.sectionTabs ?? [];
+});
 </script>

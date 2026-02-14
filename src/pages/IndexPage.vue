@@ -14,6 +14,7 @@
         ><br />
         <img :src="user?.picture" alt="User Picture" />
       </div>
+
       <div v-else>
         <GoogleLogin :callback="handleLogin" prompt />
         <q-separator class="q-my-md" />

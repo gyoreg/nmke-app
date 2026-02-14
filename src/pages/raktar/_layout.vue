@@ -1,5 +1,5 @@
 <template>
-  <h3>Raktár index</h3>
+  <router-view />
 </template>
 
 <script setup lang="ts"></script>
